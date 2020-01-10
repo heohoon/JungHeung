@@ -8,9 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Main Page</title>
 </head>
 <body>
-$END$
+    ${mdto.id}<br>
+    ${id}<br>
+    <h3>${mdto.name}님 환영합니다.</h3>
+
 </body>
 </html>

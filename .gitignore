@@ -2,6 +2,6 @@
 /workspace.xml
 .idea/
 target/
-web/META-INF/context.xml
+jhgoldresort/web/META-INF/context.xml
 *.iml
 out/
