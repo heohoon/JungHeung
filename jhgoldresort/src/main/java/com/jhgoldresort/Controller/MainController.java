@@ -10,13 +10,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
-@WebServlet("*.JH")
+@WebServlet("*.jh")
 public class MainController extends HttpServlet {
     String view = null;
+    MemberDAO mdao = null;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,7 +41,6 @@ public class MainController extends HttpServlet {
 
 
     protected void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-
         String uri = request.getRequestURI();
         System.out.println("uri : " + uri);
         String conPath = request.getContextPath();
@@ -48,18 +50,34 @@ public class MainController extends HttpServlet {
         System.out.println(request.getParameter("userId"));
         System.out.println(request.getParameter("userPassword"));
 
-        if(command.equals("/login.JH")){
-            MemberDAO mdao = MemberDAO.getInstance();
-            MemberDTO mdto = mdao.selectMember(request.getParameter("userId"));
-            request.setAttribute("mdto",mdto);
-            view ="main.JH";
-            request.getRequestDispatcher("/main.JH").forward(request,response);
+        switch(command){
+            case "/login.jh" :
+                mdao = MemberDAO.getInstance();
+                MemberDTO mdto = mdao.selectMember(request.getParameter("userId"), request.getParameter("userPassword"));
+                if (mdto.getId() != null) {
+                    request.setAttribute("mdto", mdto);
+                    HttpSession session = request.getSession();
+                    session.setAttribute("userName", mdto.getName());
+                    view = "main.jh";
+                    response.sendRedirect(view);
+                } else {
+                    view = "/";
+                    response.sendRedirect(view);
+                } break;
 
+            case "/main.jh" :
+                view = "/main.jsp";
+                System.out.println(view);
+                request.getRequestDispatcher(view).forward(request, response);
+                break;
+
+            case "/memberList.jh" :
+                mdao = MemberDAO.getInstance();
+                ArrayList<MemberDTO> mList = mdao.selectMemberAll();
+                view = "/memberList.jsp";
+                request.setAttribute("mList",mList);
+                request.getRequestDispatcher(view).forward(request,response);
+                break;
         }
-        if(command.equals("/main.JH")){
-            view ="/main.jsp";
-        }
-        System.out.println(view);
-        request.getRequestDispatcher(view).forward(request,response);
     }
 }

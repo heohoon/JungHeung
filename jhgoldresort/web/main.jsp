@@ -11,9 +11,11 @@
     <title>Main Page</title>
 </head>
 <body>
-    ${mdto.id}<br>
-    ${id}<br>
-    <h3>${mdto.name}님 환영합니다.</h3>
+    ${userName}<br>
+    <h3>${userName}님 환영합니다.</h3><br>
+    <form action="/memberList.jh" method="POST">
+        <input type="submit" name="submit" value="get all member list">
+    </form>
 
 </body>
 </html>

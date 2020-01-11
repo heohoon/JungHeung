@@ -11,7 +11,7 @@
     <title>Index Page</title>
   </head>
   <body>
-    <form action="login.JH" method="POST">
+    <form action="login.jh" method="POST">
       <label>ID :</label>
       <input type="text" name="userId" placeholder="input your ID">
       <label>Password :</label>
