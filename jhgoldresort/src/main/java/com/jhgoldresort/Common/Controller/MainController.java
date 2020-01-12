@@ -92,26 +92,6 @@ public class MainController extends HttpServlet {
                 request.getRequestDispatcher(view).forward(request, response);
                 break;
 
-            case "/signup.jh" :
-                view = "/signUp.jsp";
-                System.out.println(view);
-                request.getRequestDispatcher(view).forward(request, response);
-                break;
-
-            case "/join.jh" :
-                int result = 0;
-                mdao = MemberDAO.getInstance();
-                result = mdao.insertMember(request.getParameter("userId"),request.getParameter("userPassword"),request.getParameter("userName"));
-                if(result == 1) {
-                    view = "/";
-                    System.out.println(view);
-                    response.sendRedirect(view);
-                    break;
-                }
-                view ="/signUp.jh";
-                response.sendRedirect(view);
-                break;
-
             case "/memberList.jh" :
                 mdao = MemberDAO.getInstance();
                 ArrayList<MemberDTO> mList = mdao.selectMemberAll();

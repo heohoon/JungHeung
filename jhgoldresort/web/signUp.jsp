@@ -16,20 +16,6 @@
 <head>
     <title>SignUp Page</title>
 </head>
-<body>
-    <form action="/join.jh" method="POST">
-        <label>ID :</label>
-        <input type="text" name="userId">
-        <label>Password :</label>
-        <input type="text" name="userPassword">
-        <label>Name :</label>
-        <input type="text" name="userName">
-        <input type="submit" name="submit" value="Join">
-    </form>
-</body>
-    <head>
-        <title>SignUp Page</title>
-    </head>
     <body>
         <form action="/join.jh" method="POST">
             <label>ID :</label>

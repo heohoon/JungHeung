@@ -20,15 +20,5 @@
       <input type="submit" name="submit" value="LogIn">
     </form>
       <input type="button" onclick="location.href='signUp.jh'" value="SignUp">
-    <div>
-      <form action="login.jh" method="POST">
-        <label>ID :</label>
-        <input type="text" name="userId" placeholder="input your ID">
-        <label>Password :</label>
-        <input type="password" name="userPassword" placeholder="input your password">
-        <input type="submit" name="submit" value="LogIn">
-      </form>
-      <input type="button" onclick="location.href='/signup.jh'" name="signUp" value="SignUp">
-    </div>s
   </body>
 </html>

@@ -35,12 +35,11 @@ public class MemberDAO {
         try{
             dc = new MariadbConnection();
             conn = dc.getDatabaseConnection();
-            ps = conn.prepareStatement("insert into users(id,password,name) values(?,?,?)");
+            ps = conn.prepareStatement("insert into users_tb(user_id,user_password,user_name) values(?,?,?)");
             ps.setString(1,userid);
             ps.setString(2,userpassword);
             ps.setString(3,username);
             result = ps.executeUpdate();
-
         } catch (NamingException | SQLException e) {
             e.printStackTrace();
         } finally{
