@@ -1,13 +1,22 @@
-package com.jhgoldresort.DTO;
+package com.jhgoldresort.Member.DTO;
 
 public class MemberDTO {
 
+    private int idx;
     private String id;
     private String name;
     private String password;
 
     public MemberDTO() {
 
+    }
+
+    public int getIdx() {
+        return idx;
+    }
+
+    public void setIdx(int idx) {
+        this.idx = idx;
     }
 
     public String getId() {

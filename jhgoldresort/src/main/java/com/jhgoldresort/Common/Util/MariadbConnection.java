@@ -1,4 +1,4 @@
-package com.jhgoldresort.Util;
+package com.jhgoldresort.Common.Util;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;

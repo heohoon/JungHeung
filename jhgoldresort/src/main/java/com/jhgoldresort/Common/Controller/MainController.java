@@ -1,11 +1,9 @@
-package com.jhgoldresort.Controller;
+package com.jhgoldresort.Common.Controller;
 
-import com.jhgoldresort.DAO.MemberDAO;
-import com.jhgoldresort.DTO.MemberDTO;
+import com.jhgoldresort.Member.DAO.MemberDAO;
+import com.jhgoldresort.Member.DTO.MemberDTO;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -69,6 +67,26 @@ public class MainController extends HttpServlet {
                 view = "/main.jsp";
                 System.out.println(view);
                 request.getRequestDispatcher(view).forward(request, response);
+                break;
+
+            case "/signup.jh" :
+                view = "/signUp.jsp";
+                System.out.println(view);
+                request.getRequestDispatcher(view).forward(request, response);
+                break;
+
+            case "/join.jh" :
+                int result = 0;
+                mdao = MemberDAO.getInstance();
+                result = mdao.insertMember(request.getParameter("userId"),request.getParameter("userPassword"),request.getParameter("userName"));
+                if(result == 1) {
+                    view = "/";
+                    System.out.println(view);
+                    response.sendRedirect(view);
+                    break;
+                }
+                view ="/signUp.jh";
+                response.sendRedirect(view);
                 break;
 
             case "/memberList.jh" :
