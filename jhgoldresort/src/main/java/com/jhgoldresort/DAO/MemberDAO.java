@@ -29,6 +29,26 @@ public class MemberDAO {
     private DatabaseConnection dc = null;
 
 
+    public int insertMember(String userid, String userpassword, String username) throws SQLException {
+        int result = 0;
+        try{
+            dc = new MariadbConnection();
+            conn = dc.getDatabaseConnection();
+            ps = conn.prepareStatement("insert into users(id,password,name) values(?,?,?)");
+            ps.setString(1,userid);
+            ps.setString(2,userpassword);
+            ps.setString(3,username);
+            result = ps.executeUpdate();
+
+        } catch (NamingException | SQLException e) {
+            e.printStackTrace();
+        } finally{
+            dc.closeConnection(null,ps,conn);
+        }
+        return result;
+    }
+
+
 
     public MemberDTO selectMember(String id, String password) throws SQLException {
         MemberDTO mdto = new MemberDTO();

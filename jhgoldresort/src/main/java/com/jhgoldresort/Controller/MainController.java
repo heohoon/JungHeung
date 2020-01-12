@@ -59,11 +59,33 @@ public class MainController extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("userName", mdto.getName());
                     view = "main.jh";
-                    response.sendRedirect(view);
                 } else {
                     view = "/";
+                }
+                response.sendRedirect(view);
+                break;
+
+            case "/join.jh" :
+                int result = 0;
+                mdao = MemberDAO.getInstance();
+                result = mdao.insertMember(request.getParameter("userId"),request.getParameter("userPassword"),request.getParameter("userName"));
+                if(result == 1) {
+                    view = "/";
+                    System.out.println(view);
+                    System.out.println("회원가입 성공!");
                     response.sendRedirect(view);
-                } break;
+                    break;
+                } else {
+                    view = "/signUp.jh";
+                    response.sendRedirect(view);
+                }
+                break;
+
+            case "/signUp.jh" :
+                view = "/signUp.jsp";
+                System.out.println(view);
+                request.getRequestDispatcher(view).forward(request, response);
+                break;
 
             case "/main.jh" :
                 view = "/main.jsp";
