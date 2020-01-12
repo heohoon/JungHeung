@@ -13,7 +13,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<<<<<<< HEAD
 <head>
     <title>SignUp Page</title>
 </head>
@@ -28,7 +27,6 @@
         <input type="submit" name="submit" value="Join">
     </form>
 </body>
-=======
     <head>
         <title>SignUp Page</title>
     </head>
@@ -43,5 +41,4 @@
             <input type="submit" name="submit" value="join">
         </form>
     </body>
->>>>>>> fc785870d7f82d3bc8ba9e4fc066bdbfd7593d32
 </html>

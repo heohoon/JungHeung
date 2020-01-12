@@ -29,16 +29,12 @@ public class MemberDAO {
     private DatabaseConnection dc = null;
 
 
-<<<<<<< HEAD:jhgoldresort/src/main/java/com/jhgoldresort/DAO/MemberDAO.java
+
     public int insertMember(String userid, String userpassword, String username) throws SQLException {
-=======
-    public int insertMember(String id, String password, String name) throws SQLException {
->>>>>>> fc785870d7f82d3bc8ba9e4fc066bdbfd7593d32:jhgoldresort/src/main/java/com/jhgoldresort/Member/DAO/MemberDAO.java
         int result = 0;
         try{
             dc = new MariadbConnection();
             conn = dc.getDatabaseConnection();
-<<<<<<< HEAD:jhgoldresort/src/main/java/com/jhgoldresort/DAO/MemberDAO.java
             ps = conn.prepareStatement("insert into users(id,password,name) values(?,?,?)");
             ps.setString(1,userid);
             ps.setString(2,userpassword);
@@ -49,31 +45,20 @@ public class MemberDAO {
             e.printStackTrace();
         } finally{
             dc.closeConnection(null,ps,conn);
-=======
-            ps = conn.prepareStatement("insert into users_tb (user_id, user_password, user_name) values ( ?, ?, ?)");
-            ps.setString(1,id);
-            ps.setString(2,password);
-            ps.setString(3,name);
-            result = ps.executeUpdate();
-        } catch (NamingException | SQLException e) {
-            e.printStackTrace();
-        } finally {
-            dc.closeConnection(null, ps, conn);
->>>>>>> fc785870d7f82d3bc8ba9e4fc066bdbfd7593d32:jhgoldresort/src/main/java/com/jhgoldresort/Member/DAO/MemberDAO.java
         }
         return result;
     }
 
 
 
-    public MemberDTO selectMember(String id, String password) throws SQLException {
+    public MemberDTO selectMember(String userid, String userpassword) throws SQLException {
         MemberDTO mdto = new MemberDTO();
         try {
             dc = new MariadbConnection();
             conn = dc.getDatabaseConnection();
             ps = conn.prepareStatement("select * from users_tb where user_id = ? and user_password = ?");
-            ps.setString(1,id);
-            ps.setString(2,password);
+            ps.setString(1,userid);
+            ps.setString(2,userpassword);
             rs = ps.executeQuery();
             if(rs.next()) {
                 mdto.setId(rs.getString("user_id"));
