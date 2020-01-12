@@ -49,6 +49,7 @@ public class MainController extends HttpServlet {
         System.out.println(request.getParameter("userPassword"));
 
         switch(command){
+            // 로그인 처리 로직 가입된 회원일 경우 메인 페이지로 이동, 미가입회원은 가입페이지로 이동
             case "/login.jh" :
                 mdao = MemberDAO.getInstance();
                 MemberDTO mdto = mdao.selectMember(request.getParameter("userId"), request.getParameter("userPassword"));
