@@ -1,4 +1,4 @@
-package com.jhgoldresort.Util;
+package com.jhgoldresort.Common.Util;
 
 import javax.naming.NamingException;
 import java.sql.Connection;

@@ -16,7 +16,7 @@
             <tr>
         <c:forEach var="i" begin="0" end="${mList.size()-1}" step="1" >
             <td>
-                ${i+1}
+                ${mList.get(i).getIdx()}
             </td>
             <td>
                 ${mList.get(i).getId()}
